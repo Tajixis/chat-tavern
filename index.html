@@ -1,68 +1,35 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <title>Socket.IO chat</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 49%; margin-right: .5%; }
+    <link rel="stylesheet" href="../css/tent.min.css">
+    <link rel="stylesheet" href="../css/style.css" />
 
-    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        var socket =  io.connect('http://localhost:3000');
+    socket.emit('ask_room');
+    </script>
+</head>
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-<script>
-  var socket =  io.connect('http://localhost:3000');
-  socket.emit('ask_room');
+<body>
+    <section>
+        <div id="room"></div>
+        <hr>
 
-</script>
+        <ul id="messages"></ul>
 
-  </head>
-  <body>
-    <div id="room"></div>
-    <hr>
+        <form action="#" class="grid c-message">.
+            <div class="grid__column grid__column--8">
+                <input id="textBar" class="c_message__item" type="text">
+            </div>
+            <div class="grid__column">
+                <input class="control__input c_message__item" type="submit">
+            </div>
+        </form>
+    </section>
 
-    <ul id="messages"></ul>
-
-
-  <p></p>
-<form action="#">
-  <div>
-    <input id="textBar" type="text">
-    <input type="submit">
-  </div>
-</form>
-<span></span>
-
-
-<script>
-
-
-socket.on('connectToRoom', function (room_n) {
-          $("#room").html(room_n);
-      });
-
-//when message let s display it in console !
-socket.on('message', function (message) {
-  console.log(message);
-});
-
-//send message now
-//submit it s first thing because it s prioritary elmts!
-$( "form" ).submit(function( event ) {
-  socket.emit('send_msg', $('#textBar').val());
-   $('#textBar').val('');
-   return false;
-});
-
-//receive msg ? let s display it !
- socket.on('receive_msg', function(message){
-    $('#messages').append($('<li>').text(message));
-  });
-
-  //a la connection on demande le pseudo
-	var pseudo = prompt("Choisi un pseudonyme");
-	socket.emit('new_pseudo',pseudo);
-</script>
+    <script src="../js/client.js"></script>
+</body>
 </html>

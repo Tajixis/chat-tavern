@@ -1,0 +1,28 @@
+/* basic reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* general */
+body { font: 13px Helvetica, Arial; }
+section {
+    width: 80%;
+    margin: auto;
+}
+/*c-form*/
+
+
+.c-message {
+    background: #000;
+    padding: 3px;
+    position: fixed;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+}
+
+.c-message .c_message__item {
+    border: 0;
+    padding: 10px;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 0;
+}
