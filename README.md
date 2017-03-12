@@ -10,7 +10,9 @@ This project is a simple discussion room with some fun interactions. The primary
 ## Environment and dependencies
 
 This Node project is tested on a windows environment
-Just run `node server` for run server.
+install with `npm install`
+run with `node server`
 
-Express: version 4.14.0
-Socket.io: version 1.7.1
+"express": "^4.15.2",
+"socket.io": "^1.7.1",
+"tent-css": "^1.3.2"
